@@ -63,6 +63,20 @@ export const portfolioData = {
               tech: ['React.js', 'Desenvolvimento']
             }
           }
+        },
+        projects: {
+          name: 'projects',
+          type: 'directory',
+          children: {
+            'second-brain': {
+              name: 'second-brain.md',
+              type: 'file',
+              title: 'Second Brain',
+              content: 'Template e framework especializado para construir um sistema de gestão de conhecimento pessoal (PKM) no Obsidian, otimizado para interação com agentes de IA. Organiza a informação em categorias (Second Brain para dados efêmeros e cronológicos, Wiki para conhecimento formal) e suporta ingestão automatizada e síntese de conhecimento.',
+              learnings: ['Síntese de Conhecimento', 'Automação com IA', 'Design de Sistemas'],
+              tech: ['Obsidian', 'Agentes de IA', 'Markdown', 'Bash']
+            }
+          }
         }
       }
     }
@@ -129,6 +143,20 @@ export const portfolioData = {
               content: 'Vocational course focused on software development and modern technologies.',
               learnings: ['Software Engineering', 'Modern Web Stack', 'Teamwork'],
               tech: ['React.js', 'Development']
+            }
+          }
+        },
+        projects: {
+          name: 'projects',
+          type: 'directory',
+          children: {
+            'second-brain': {
+              name: 'second-brain.md',
+              type: 'file',
+              title: 'Second Brain',
+              content: 'Specialized template and framework for building a personal knowledge management (PKM) system in Obsidian, optimized for interaction with AI agents. It organizes information into categories (Second Brain for ephemeral and chronological data, Wiki for formal knowledge) and supports automated ingestion and knowledge synthesis.',
+              learnings: ['Knowledge Synthesis', 'AI Automation', 'System Design'],
+              tech: ['Obsidian', 'AI Agents', 'Markdown', 'Bash']
             }
           }
         }
