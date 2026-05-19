@@ -23,3 +23,14 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
+
+@layer base {
+  .theme-light {
+    --background: #f8f8f2;
+    --foreground: #282a36;
+    --color-dracula-bg: #f8f8f2;
+    --color-dracula-fg: #282a36;
+    --color-dracula-selection: #e6e6e6;
+    /* We keep the accent colors from Dracula as they contrast well enough or can be slightly adjusted */
+  }
+}
