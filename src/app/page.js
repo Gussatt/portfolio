@@ -15,7 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     // Apply theme class to body
-    document.body.className = theme === 'light' ? 'theme-light' : '';
+    document.body.classList.toggle('theme-light', theme === 'light');
   }, [theme]);
 
   // When language changes, clear selected item as paths might differ or content changes
