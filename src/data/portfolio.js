@@ -7,8 +7,8 @@ export const portfolioData = {
         about: {
           name: 'about.md',
           type: 'file',
-          title: 'Sobre Gustavo Saturnino',
-          content: 'Especialista em Suporte Técnico com expertise em solucionar problemas e atender solicitações de parceiros, destacando-se pela resolução eficiente de tickets e pela entrega de uma experiência excepcional ao cliente (CX). Utilizo raciocínio lógico e habilidades em HTML, CSS e JS para resolver desafios técnicos de forma eficaz. Responsável por lidar com tickets de parceiros em toda a América, em português e inglês. Entusiasta do desenvolvimento de software.',
+          title: 'Sobre mim',
+          content: 'Prazer! Eu sou o Gustavo, um cara simples que gosta de mexer com muita coisa, ama tecnologia e consegue se interessar por muita coisa diferente. Atualmente sou um Technical Support Engineer na Braze e nas horas vagas estudo o que me dá vontade!',
           learnings: ['Suporte Técnico Especializado', 'Customer Experience (CX)', 'Martech & SaaS B2B', 'Suporte Bilíngue (PT/EN)'],
           tech: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Zendesk']
         },
@@ -16,6 +16,14 @@ export const portfolioData = {
           name: 'experience',
           type: 'directory',
           children: {
+            'braze-support-engineer': {
+              name: 'braze-support-engineer.md',
+              type: 'file',
+              title: 'Technical Support Engineer @ Braze',
+              content: 'Responsável por assumir e resolver incidentes complexos de Nível 3, desenhando planos de resposta estratégicos para estabilizar funções críticas da plataforma. Navegação técnica no codebase para realização de data pulls e aplicação de correções de bugs. Arquitetura de melhorias contínuas em fluxos baseados em IA e criação de ferramentas internas de diagnóstico. Atuação direta com Produto fornecendo feedbacks baseados em dados.',
+              learnings: ['Resolução de Incidentes Nível 3', 'Automação de Fluxos com IA', 'Navegação em Codebase', 'Ferramentas de Diagnóstico'],
+              tech: ['Ruby on Rails', 'Troubleshooting', 'Customer Experience']
+            },
             'technical-support-consultant': {
               name: 'technical-support-consultant.md',
               type: 'file',
@@ -90,7 +98,7 @@ export const portfolioData = {
           name: 'about.md',
           type: 'file',
           title: 'About Gustavo Saturnino',
-          content: 'Technical Support Specialist with expertise in problem-solving and handling partner requests, excelling in efficient ticket resolution and delivering an exceptional customer experience (CX). I use logical reasoning and skills in HTML, CSS, and JS to solve technical challenges effectively. Responsible for handling partner tickets across the Americas, in both Portuguese and English. Software development enthusiast.',
+          content: "Nice to meet you! I'm Gustavo, a simple guy who likes to tinker with a lot of things, loves technology, and can get interested in many different topics. I'm currently a Technical Support Engineer at Braze, and in my spare time, I study whatever I feel like!",
           learnings: ['Technical Support Specialist', 'Customer Experience (CX)', 'Martech & B2B SaaS', 'Bilingual Support (PT/EN)'],
           tech: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Zendesk']
         },
@@ -98,6 +106,14 @@ export const portfolioData = {
           name: 'experience',
           type: 'directory',
           children: {
+            'braze-support-engineer': {
+              name: 'braze-support-engineer.md',
+              type: 'file',
+              title: 'Technical Support Engineer @ Braze',
+              content: 'Responsible for managing and resolving complex Tier 3 incidents, designing strategic response plans to stabilize critical platform functions. Perform codebase technical navigation for data pulls and bug fixes, reducing technical debt. Architect improvements in AI-driven workflows and create internal diagnostic tools. Partner directly with Product, providing data-driven "front-line" feedback.',
+              learnings: ['Tier 3 Incident Resolution', 'AI Workflow Automation', 'Codebase Navigation', 'Internal Tooling'],
+              tech: ['Ruby on Rails', 'Troubleshooting', 'Customer Experience']
+            },
             'technical-support-consultant': {
               name: 'technical-support-consultant.md',
               type: 'file',
