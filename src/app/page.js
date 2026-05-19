@@ -28,9 +28,9 @@ export default function Home() {
   const handleCommand = (cmd) => {
     const args = cmd.split(' ');
     const command = args[0].toLowerCase();
-    
+
     let output = '';
-    
+
     switch (command) {
       case 'cat':
         const fileName = args[1];
@@ -63,14 +63,14 @@ export default function Home() {
         setSelectedItem(null);
         return;
       case 'help':
-        output = lang === 'pt' 
+        output = lang === 'pt'
           ? 'Comandos disponíveis: cat, clear, help, whoami, date, lang [pt|en], theme [light|dark]'
           : 'Available commands: cat, clear, help, whoami, date, lang [pt|en], theme [light|dark]';
         break;
       case 'whoami':
         output = lang === 'pt'
-          ? 'Gustavo Saturnino - Especialista em Suporte Técnico e entusiasta de desenvolvimento de software.'
-          : 'Gustavo Saturnino - Technical Support Specialist and software development enthusiast.';
+          ? 'Gustavo Saturnino - Engenheiro de software.'
+          : 'Gustavo Saturnino - Software Engineer.';
         break;
       case 'date':
         output = new Date().toString();
@@ -103,7 +103,7 @@ export default function Home() {
   }, [history]);
 
   return (
-    <TerminalLayout 
+    <TerminalLayout
       sidebar={<SidebarTree data={currentData} onSelect={setSelectedItem} lang={lang} />}
       theme={theme}
       setTheme={setTheme}
@@ -115,11 +115,11 @@ export default function Home() {
           {/* Render Selected Item */}
           <AnimatePresence mode="wait">
             {selectedItem && (
-              <motion.div 
-                key={selectedItem.name} 
-                initial={{ opacity: 0, y: 10 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                exit={{ opacity: 0, y: -10 }} 
+              <motion.div
+                key={selectedItem.name}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
                 className="mb-8 p-6 bg-dracula-selection bg-opacity-30 rounded-lg border border-dracula-selection"
               >
                 <h1 className="text-3xl text-dracula-pink font-bold mb-4">{selectedItem.title}</h1>
@@ -144,7 +144,7 @@ export default function Home() {
               </motion.div>
             )}
           </AnimatePresence>
-          
+
           <div className="space-y-3 mt-4">
             {history.map((h, i) => (
               <div key={i} className="font-mono text-sm">
@@ -159,7 +159,7 @@ export default function Home() {
             <div ref={bottomRef} />
           </div>
         </div>
-        
+
         <TerminalCommandInput onCommand={handleCommand} />
       </div>
     </TerminalLayout>
