@@ -72,11 +72,13 @@ export default function SidebarTree({ data, onSelect, onClose }) {
   const MAX_WIDTH = 520;
   const DEFAULT_WIDTH = 340;
   const [sidebarWidth, setSidebarWidth] = useState(DEFAULT_WIDTH);
+  const [isMounted, setIsMounted] = useState(false);
   const isResizingRef = useRef(false);
   const startXRef = useRef(0);
   const startWidthRef = useRef(DEFAULT_WIDTH);
 
   useEffect(() => {
+    setIsMounted(true);
     const handleMouseMove = (event) => {
       if (!isResizingRef.current) return;
       const delta = event.clientX - startXRef.current;
@@ -110,7 +112,7 @@ export default function SidebarTree({ data, onSelect, onClose }) {
   return (
     <nav
       className="border-r border-dracula-selection flex flex-col font-mono text-sm bg-dracula-bg overflow-hidden h-full transition-colors duration-300 relative w-[280px] lg:w-auto max-w-[85vw] lg:max-w-none"
-      style={{ width: typeof window !== 'undefined' && window.innerWidth >= 1024 ? `${sidebarWidth}px` : undefined }}
+      style={{ width: isMounted && window.innerWidth >= 1024 ? `${sidebarWidth}px` : undefined }}
     >
       <div className="p-6 sm:p-8 border-b border-dracula-selection flex flex-col items-center">
         <ProfileImage 
