@@ -1,48 +1,41 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function TerminalCommandInput({ onCommand, currentPath = '~', availableFiles = [], lang = 'en' }) {
   const [input, setInput] = useState('');
-  const [suggestion, setSuggestion] = useState('');
 
-  useEffect(() => {
+  const suggestion = (() => {
     const parts = input.split(' ');
     if (parts[0] === 'cat' && parts[1] !== undefined) {
       const search = parts.slice(1).join(' ');
       if (search) {
         const found = availableFiles.find(f => f.startsWith(search));
         if (found && found !== search) {
-          setSuggestion(found.slice(search.length));
-        } else {
-          setSuggestion('');
+          return found.slice(search.length);
         }
-      } else {
-        setSuggestion('');
       }
-    } else {
-      setSuggestion('');
     }
-  }, [input, availableFiles]);
+    return '';
+  })();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
       onCommand(input.trim());
       setInput('');
-      setSuggestion('');
     }
   };
 
   const handleKeyDown = (e) => {
     if (e.key === 'ArrowRight' && suggestion) {
       setInput(input + suggestion);
-      setSuggestion('');
     }
   };
 
   return (
     <div className="mt-4 border-t border-dracula-selection pt-4">
       <form onSubmit={handleSubmit} className="flex items-center space-x-2 relative">
-        <span className="text-dracula-green">gustavo@portfolio</span>
+        <span className="text-dracula-green hidden sm:inline">gustavo@portfolio</span>
+        <span className="text-dracula-green sm:hidden">user</span>
         <span className="text-dracula-fg">:</span>
         <span className="text-dracula-purple">{currentPath}</span>
         <span className="text-dracula-pink">$</span>

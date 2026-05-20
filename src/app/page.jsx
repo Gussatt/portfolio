@@ -9,7 +9,9 @@ import { portfolioData } from '@/data/portfolio';
 export default function Home() {
   const [lang, setLang] = useState('pt');
   const [theme, setTheme] = useState('dark');
-  const [selectedItem, setSelectedItem] = useState(null);
+  // Get about file for the current language
+  const aboutFile = portfolioData[lang].root.children.about;
+  const [selectedItem, setSelectedItem] = useState(aboutFile || null);
   const [history, setHistory] = useState([]);
   const bottomRef = useRef(null);
 
@@ -18,48 +20,33 @@ export default function Home() {
     document.body.classList.toggle('theme-light', theme === 'light');
   }, [theme]);
 
-  // Automatically open about.md on mount
-  useEffect(() => {
-    const aboutFile = portfolioData[lang].root.children.about;
-    if (aboutFile) {
-      setSelectedItem(aboutFile);
-    }
-  }, []);
-
-  // When language changes, update the selected item to the corresponding one in the new language
-  useEffect(() => {
-    if (selectedItem) {
-      // Find the same file in the new language's data
-      const findFileByName = (obj, name) => {
-        if (obj.type === 'file' && obj.name === name) return obj;
-        if (obj.children) {
-          for (const child of Object.values(obj.children)) {
-            const found = findFileByName(child, name);
-            if (found) return found;
-          }
+  // Derived state: get the item to display based on the selected name and current language
+  const displayedItem = (() => {
+    if (!selectedItem) return null;
+    
+    const findFileByName = (obj, name) => {
+      if (obj.type === 'file' && obj.name === name) return obj;
+      if (obj.children) {
+        for (const child of Object.values(obj.children)) {
+          const found = findFileByName(child, name);
+          if (found) return found;
         }
-        return null;
-      };
-      
-      const updatedItem = findFileByName(portfolioData[lang].root, selectedItem.name);
-      if (updatedItem) {
-        setSelectedItem(updatedItem);
-      } else {
-        setSelectedItem(null);
       }
-    }
-  }, [lang]);
+      return null;
+    };
+    
+    return findFileByName(portfolioData[lang].root, selectedItem.name);
+  })();
 
   const currentData = portfolioData[lang];
 
   const handleCommand = (cmd) => {
     const args = cmd.split(' ');
     const command = args[0].toLowerCase();
-
     let output = '';
 
     switch (command) {
-      case 'cat':
+      case 'cat': {
         const fileName = args[1];
         if (!fileName) {
           output = lang === 'pt' ? 'cat: falta o operando arquivo' : 'cat: missing file operand';
@@ -85,6 +72,7 @@ export default function Home() {
           }
         }
         break;
+      }
       case 'clear':
         setHistory([]);
         setSelectedItem(null);
@@ -122,7 +110,7 @@ export default function Home() {
         output = lang === 'pt' ? `comando não encontrado: ${command}` : `command not found: ${command}`;
     }
 
-    setHistory([...history, { cmd, output }]);
+    setHistory(prev => [...prev, { cmd, output }]);
   };
 
   useEffect(() => {
@@ -141,36 +129,37 @@ export default function Home() {
         <div className="flex-1">
           {/* Render Selected Item */}
           <AnimatePresence mode="wait">
-            {selectedItem && (
+            {displayedItem && (
               <motion.div
-                key={selectedItem.name}
+                key={displayedItem.name}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="mb-8 p-6 bg-dracula-selection/30 rounded-lg border border-dracula-selection"
-              >                <h1 className="text-3xl text-dracula-pink font-bold mb-4">{selectedItem.title}</h1>
-                <p className="text-lg leading-relaxed mb-6 whitespace-pre-wrap">{selectedItem.content}</p>
+                className="mb-6 sm:mb-8 p-4 sm:p-6 bg-dracula-selection/30 rounded-lg border border-dracula-selection"
+              >
+                <h1 className="text-2xl sm:text-3xl text-dracula-pink font-bold mb-3 sm:mb-4">{displayedItem.title}</h1>
+                <p className="text-base sm:text-lg leading-relaxed mb-4 sm:mb-6 whitespace-pre-wrap">{displayedItem.content}</p>
                 <div className="bg-dracula-selection p-4 rounded-lg mb-4 border-l-4 border-dracula-yellow shadow-inner">
                   <h2 className="text-dracula-yellow font-bold uppercase text-xs mb-2">
                     {lang === 'pt' ? 'Notas Técnicas' : 'Technical Notes'}
                   </h2>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 text-sm">
-                    {selectedItem.learnings.map(l => (
+                    {displayedItem.learnings.map(l => (
                       <li key={l} className="flex items-center"><span className="text-dracula-green mr-2">➜</span> {l}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="flex flex-wrap gap-2 items-center justify-between">
                   <div className="flex flex-wrap gap-2">
-                    {selectedItem.tech.map(t => (
+                    {displayedItem.tech.map(t => (
                       <span key={t} className="bg-dracula-purple/20 text-dracula-purple px-2 py-1 rounded text-xs border border-dracula-purple/30 font-bold">
                         {t}
                       </span>
                     ))}
                   </div>
-                  {selectedItem.url && (
+                  {displayedItem.url && (
                     <a 
-                      href={selectedItem.url} 
+                      href={displayedItem.url} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-xs text-dracula-cyan hover:underline flex items-center space-x-1"
