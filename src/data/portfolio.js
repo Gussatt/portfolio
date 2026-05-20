@@ -7,7 +7,7 @@ export const portfolioData = {
         about: {
           name: 'about.md',
           type: 'file',
-          title: 'Sobre mim',
+          title: 'Gustavo Saturnino',
           content: 'Prazer! Eu sou o Gustavo, um cara simples que gosta de mexer com muita coisa, ama tecnologia e consegue se interessar por muita coisa diferente. Atualmente sou um Technical Support Engineer na Braze e nas horas vagas estudo o que me dá vontade!',
           learnings: ['Suporte Técnico Especializado', 'Customer Experience (CX)', 'Martech & SaaS B2B', 'Suporte Bilíngue (PT/EN)'],
           tech: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Zendesk']
@@ -98,7 +98,7 @@ export const portfolioData = {
         about: {
           name: 'about.md',
           type: 'file',
-          title: 'About Gustavo Saturnino',
+          title: 'Gustavo Saturnino',
           content: "Nice to meet you! I'm Gustavo, a simple guy who likes to tinker with a lot of things, loves technology, and can get interested in many different topics. I'm currently a Technical Support Engineer at Braze, and in my spare time, I study whatever I feel like!",
           learnings: ['Technical Support Specialist', 'Customer Experience (CX)', 'Martech & B2B SaaS', 'Bilingual Support (PT/EN)'],
           tech: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Zendesk']
