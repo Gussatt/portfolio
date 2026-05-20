@@ -120,7 +120,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="mb-8 p-6 bg-dracula-selection bg-opacity-30 rounded-lg border border-dracula-selection font-mono"
+                className="mb-8 p-6 bg-dracula-selection bg-opacity-30 rounded-lg border border-dracula-selection"
               >
                 <h1 className="text-3xl text-dracula-pink font-bold mb-4">{selectedItem.title}</h1>
                 <p className="text-lg leading-relaxed mb-6">{selectedItem.content}</p>
@@ -136,7 +136,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {selectedItem.tech.map(t => (
-                    <span key={t} className="bg-dracula-purple bg-opacity-20 text-dracula-purple px-2 py-1 rounded text-xs border border-dracula-purple border-opacity-30">
+                    <span key={t} className="bg-dracula-purple bg-opacity-20 text-dracula-fg px-2 py-1 rounded text-xs border border-dracula-purple border-opacity-30">
                       {t}
                     </span>
                   ))}
