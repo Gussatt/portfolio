@@ -7,7 +7,7 @@ export default function ProfileImage({ src, alt, size = 64 }) {
       <img
         src={src}
         alt={alt}
-        className="w-full h-full object-cover grayscale contrast-[1.1] brightness-[1.05] hover:grayscale-0 transition-all duration-500"
+        className="w-full h-full object-cover transition-all duration-500"
       />
     </div>
   );
