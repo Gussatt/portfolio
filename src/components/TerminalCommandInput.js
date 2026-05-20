@@ -55,6 +55,7 @@ export default function TerminalCommandInput({ onCommand, currentPath = '~', ava
             onKeyDown={handleKeyDown}
             spellCheck="false"
             autoComplete="off"
+            aria-label={lang === 'pt' ? 'Entrada de comando do terminal' : 'Terminal command input'}
           />
           {suggestion && (
             <div className="absolute left-0 pointer-events-none text-dracula-comment font-mono flex">

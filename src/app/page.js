@@ -149,7 +149,7 @@ export default function Home() {
                 exit={{ opacity: 0, y: -10 }}
                 className="mb-8 p-6 bg-dracula-selection/30 rounded-lg border border-dracula-selection"
               >                <h1 className="text-3xl text-dracula-pink font-bold mb-4">{selectedItem.title}</h1>
-                <p className="text-lg leading-relaxed mb-6">{selectedItem.content}</p>
+                <p className="text-lg leading-relaxed mb-6 whitespace-pre-wrap">{selectedItem.content}</p>
                 <div className="bg-dracula-selection p-4 rounded-lg mb-4 border-l-4 border-dracula-yellow shadow-inner">
                   <h2 className="text-dracula-yellow font-bold uppercase text-xs mb-2">
                     {lang === 'pt' ? 'Notas Técnicas' : 'Technical Notes'}
