@@ -120,7 +120,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="mb-8 p-6 bg-dracula-selection bg-opacity-30 rounded-lg border border-dracula-selection"
+                className="mb-8 p-6 bg-dracula-selection bg-opacity-30 rounded-lg border border-dracula-selection font-mono"
               >
                 <h1 className="text-3xl text-dracula-pink font-bold mb-4">{selectedItem.title}</h1>
                 <p className="text-lg leading-relaxed mb-6">{selectedItem.content}</p>
