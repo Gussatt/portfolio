@@ -199,7 +199,24 @@ export default function Home() {
           </div>
         </div>
 
-        <TerminalCommandInput onCommand={handleCommand} />
+        <div className="flex-shrink-0">
+          <TerminalCommandInput 
+            onCommand={handleCommand} 
+            availableFiles={Object.values(currentData.root.children).reduce((acc, curr) => {
+              const getFiles = (obj) => {
+                if (obj.type === 'file') return [obj.name];
+                if (obj.children) return Object.values(obj.children).flatMap(getFiles);
+                return [];
+              };
+              return [...acc, ...getFiles(curr)];
+            }, [])}
+            lang={lang}
+          />
+          <div className="mt-2 text-[10px] text-dracula-comment font-mono flex items-center space-x-2">
+            <span className="bg-dracula-selection px-1 rounded text-dracula-yellow">TIP:</span>
+            <span>{lang === 'pt' ? 'Comandos: cat [arquivo], help, whoami, date, lang [pt|en], theme [light|dark], clear' : 'Commands: cat [file], help, whoami, date, lang [pt|en], theme [light|dark], clear'}</span>
+          </div>
+        </div>
       </div>
     </TerminalLayout>
   );
