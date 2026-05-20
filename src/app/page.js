@@ -160,12 +160,25 @@ export default function Home() {
                     ))}
                   </ul>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {selectedItem.tech.map(t => (
-                    <span key={t} className="bg-dracula-purple/20 text-dracula-purple px-2 py-1 rounded text-xs border border-dracula-purple/30 font-bold">
-                      {t}
-                    </span>
-                  ))}
+                <div className="flex flex-wrap gap-2 items-center justify-between">
+                  <div className="flex flex-wrap gap-2">
+                    {selectedItem.tech.map(t => (
+                      <span key={t} className="bg-dracula-purple/20 text-dracula-purple px-2 py-1 rounded text-xs border border-dracula-purple/30 font-bold">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  {selectedItem.url && (
+                    <a 
+                      href={selectedItem.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-xs text-dracula-cyan hover:underline flex items-center space-x-1"
+                    >
+                      <span>{lang === 'pt' ? 'Ver Repositório' : 'Visit Repository'}</span>
+                      <span className="text-[10px]">↗</span>
+                    </a>
+                  )}
                 </div>
               </motion.div>
             )}
