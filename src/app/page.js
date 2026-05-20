@@ -18,9 +18,36 @@ export default function Home() {
     document.body.classList.toggle('theme-light', theme === 'light');
   }, [theme]);
 
-  // When language changes, clear selected item as paths might differ or content changes
+  // Automatically open about.md on mount
   useEffect(() => {
-    setSelectedItem(null);
+    const aboutFile = portfolioData[lang].root.children.about;
+    if (aboutFile) {
+      setSelectedItem(aboutFile);
+    }
+  }, []);
+
+  // When language changes, update the selected item to the corresponding one in the new language
+  useEffect(() => {
+    if (selectedItem) {
+      // Find the same file in the new language's data
+      const findFileByName = (obj, name) => {
+        if (obj.type === 'file' && obj.name === name) return obj;
+        if (obj.children) {
+          for (const child of Object.values(obj.children)) {
+            const found = findFileByName(child, name);
+            if (found) return found;
+          }
+        }
+        return null;
+      };
+      
+      const updatedItem = findFileByName(portfolioData[lang].root, selectedItem.name);
+      if (updatedItem) {
+        setSelectedItem(updatedItem);
+      } else {
+        setSelectedItem(null);
+      }
+    }
   }, [lang]);
 
   const currentData = portfolioData[lang];
