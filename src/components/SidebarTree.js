@@ -1,6 +1,6 @@
 import { Folder, FileText, ChevronRight, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import PixelatedImage from './PixelatedImage';
+import ProfileImage from './PixelatedImage';
 
 const SidebarItem = ({ item, name, depth = 0, onSelect }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -33,7 +33,7 @@ export default function SidebarTree({ data, onSelect, lang }) {
   return (
     <div className="w-72 border-r border-dracula-selection flex flex-col font-mono text-sm bg-dracula-bg overflow-hidden h-full transition-colors duration-300">
       <div className="p-6 border-b border-dracula-selection flex flex-col items-center">
-        <PixelatedImage 
+        <ProfileImage 
           src="/profile_photo.png" 
           alt="Gustavo Saturnino" 
           size={80} 
