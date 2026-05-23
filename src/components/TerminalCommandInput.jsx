@@ -34,7 +34,7 @@ export default function TerminalCommandInput({ onCommand, currentPath = '~', ava
   return (
     <div className="mt-4 border-t border-dracula-selection pt-4">
       <form onSubmit={handleSubmit} className="flex items-center space-x-2 relative">
-        <span className="text-dracula-green hidden sm:inline">gustavo@portfolio</span>
+        <span className="text-dracula-green hidden sm:inline">gustavo@me</span>
         <span className="text-dracula-green sm:hidden">user</span>
         <span className="text-dracula-fg">:</span>
         <span className="text-dracula-purple">{currentPath}</span>

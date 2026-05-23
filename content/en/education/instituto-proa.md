@@ -7,5 +7,6 @@ learnings:
 tech:
   - React.js
   - Development
+  - Entrepeneurship
 ---
 Vocational course focused on software development and modern technologies.

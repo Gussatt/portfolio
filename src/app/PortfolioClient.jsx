@@ -176,7 +176,7 @@ export default function PortfolioClient({ portfolioData }) {
             {history.map((h, i) => (
               <div key={i} className="font-mono text-sm">
                 <div className="flex space-x-2">
-                  <span className="text-dracula-green font-bold">gustavo@portfolio</span>
+                  <span className="text-dracula-green font-bold">gustavo@me</span>
                   <span className="text-dracula-pink">$</span>
                   <span>{h.cmd}</span>
                 </div>
