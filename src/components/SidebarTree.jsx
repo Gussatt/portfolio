@@ -78,6 +78,7 @@ export default function SidebarTree({ data, onSelect, onClose }) {
   const startWidthRef = useRef(DEFAULT_WIDTH);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
     const handleMouseMove = (event) => {
       if (!isResizingRef.current) return;
