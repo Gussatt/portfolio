@@ -7,5 +7,6 @@ learnings:
 tech:
   - CS
   - Mathematics
+  - Software Engineering
 ---
 Bachelor's degree in Computer Science at the São Paulo Faculty of Technology.
